@@ -1,4 +1,3 @@
-import { stringify } from "querystring"
 export interface IActivity 
 {
     id: string;
@@ -8,5 +7,4 @@ export interface IActivity
     date: string;
     city: string;
     venue: string;
-
 }
