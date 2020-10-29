@@ -7,8 +7,8 @@ axios.defaults.baseURL = "http://localhost:5555/api";
 
 axios.interceptors.response.use(undefined, (error) => {
   const { status, data, config } = error.response;
-  if(error.message === 'Network Error' && !error.response){
-      toast.error('Network error - make sure API is running!');
+  if (error.message === "Network Error" && !error.response) {
+    toast.error("Network error - make sure API is running!");
   }
   if (status === 404) {
     history.push("/notfound");
@@ -23,6 +23,7 @@ axios.interceptors.response.use(undefined, (error) => {
   if (status === 500) {
     toast.error("Server error - check the terminal for more info!");
   }
+  throw error;
 });
 
 const responseBody = (response: AxiosResponse) => response.data;
