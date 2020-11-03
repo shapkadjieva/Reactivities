@@ -1,4 +1,4 @@
-
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
 
 namespace Domain
@@ -7,6 +7,7 @@ namespace Domain
     
     {
         public string DisplayName { get; set; }
+        public virtual ICollection<UserActivity> UserActivities { get; set; }
         
     }
 }
