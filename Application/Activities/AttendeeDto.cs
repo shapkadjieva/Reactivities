@@ -1,4 +1,4 @@
-namespace Application
+namespace Application.Activities
 {
     public class AttendeeDto
     {
