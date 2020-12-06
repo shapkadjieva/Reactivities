@@ -27,7 +27,7 @@ export default class ActivityStore {
   @observable loading = false;
   @observable.ref hubConnection: HubConnection | null = null;
 
-  @action createHubConnection = (activityId: string) => {
+  @action createHubConnection = () => {
     this.hubConnection = new HubConnectionBuilder()
       .withUrl("http://localhost:5555/chat", {
         accessTokenFactory: () => this.rootStore.commonStore.token!,
@@ -35,14 +35,10 @@ export default class ActivityStore {
       .configureLogging(LogLevel.Information)
       .build();
 
-    this.hubConnection
-      .start()
-      .then(() => console.log(this.hubConnection!.state))
-      .then(() => {
-        console.log("Attempting to join group");
-        this.hubConnection!.invoke("AddToGroup", activityId);
-      })
-      .catch((error) => console.log("Error establishing connection: ", error));
+      this.hubConnection	
+      .start()	
+      .then(() => console.log(this.hubConnection!.state))	
+      .catch(error => console.log('Error establishing connection: ', error));
 
     this.hubConnection.on("ReceiveComment", (comment) => {
       runInAction(() => {

@@ -9,7 +9,7 @@ export interface IActivity
     venue: string;
     isGoing: boolean;
     isHost: boolean;
-    attendees: IAttendee[]
+    attendees: IAttendee[];
     comments: IComment[];
 }
 
@@ -23,7 +23,7 @@ export interface IComment {
 }
 
 export interface IActivityFormValues extends Partial<IActivity> {
-    time?: Date
+    time?: Date;
 }
 
 export class ActivityFormValues implements IActivityFormValues {
@@ -38,7 +38,7 @@ export class ActivityFormValues implements IActivityFormValues {
 
     constructor(init? : IActivityFormValues) {
         if (init && init.date){
-            init.time = init.date
+            init.time = init.date;
         }
         Object.assign(this, init);
             
@@ -48,6 +48,7 @@ export class ActivityFormValues implements IActivityFormValues {
 export interface IAttendee {
     userName: string;
     displayName: string;
-    image: string,
+    image: string;
     isHost: boolean;
+    following?: boolean;
 }
